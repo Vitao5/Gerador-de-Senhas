@@ -1,0 +1,28 @@
+.bg-card{
+    background-color: #ffffff;
+}
+
+.form-check-input{
+    height: 1.5rem !important;
+    width: 3rem !important;
+}
+
+
+.btn-primary{
+    background-color: #7431F9;
+}
+
+.form-check-input:checked {
+    background-color:  #7431F9;
+    border-color: #7431F9;
+}
+
+.btn{
+    border: 2px solid #7431F9;
+}
+.btn:active{
+    border: 2px solid #56c747;
+}
+.card-body{
+    width: 48rem;
+}
