@@ -34,14 +34,14 @@
    
       <div class="card   shadow col-12 col-lg-7 col-xxl-6 ">
         <div class="border-bottom text-center pt-3">
-          <h3 class="mb-3">Personalize sua senha</h3>
+          <h4 class="mb-3">Personalize sua senha</h4>
         </div>
         <form [formGroup]="formSenha">
           <div class="p-4">
             <label class="form-check-label ms-3 mt-3">Número de caracteres da senha</label>
             <div class="d-flex justify-content-start my-3">
               <div class="ms-4 ">
-                <input type="range" name="vol" value="10" min="10" max="25" class="my-3 input-range" 
+                <input type="range" name="vol" value="10" min="8" max="25" class="my-3 input-range custom" 
                   oninput="display.value=value" onchange="display.value=value" formControlName="tamanhoSenha">
               </div>
               <div class="col-lg-2 ms-5 ps-5 col-2">
