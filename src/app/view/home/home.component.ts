@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
 
   gerarLetrasMaiusculas(){
     const tamanhoSenha = '-'+this.formSenha.get('tamanhoSenha')?.value
-    const alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVXYZÇ'
+    const alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVXYZÇÁÉÍÓÚ'
     for (let index = 0; index <this.formSenha.get('tamanhoSenha')?.value; index++) {
      const senha =  alfabeto[Math.floor(Math.random() * alfabeto.length)]
       this.senhaLetrasMaiusculas.push(senha)
@@ -67,7 +67,7 @@ export class HomeComponent implements OnInit {
 
   gerarLetrasMinusculas(){
     const tamanhoSenha = '-'+this.formSenha.get('tamanhoSenha')?.value
-    const alfabeto = 'abcdefghijklmnopqrstuvxyzç'
+    const alfabeto = 'abcdefghijklmnopqrstuvxyzçáéíóú'
     for (let index = 0; index <this.formSenha.get('tamanhoSenha')?.value; index++) {
      const senha =  alfabeto[Math.floor(Math.random() * alfabeto.length)]
       this.senhasLetrasMinusculas.push(senha)
@@ -88,7 +88,7 @@ export class HomeComponent implements OnInit {
   }
 
   gerarCaracteresEspeciais(){
-    const  s = '!@#$%&*?'
+    const  s = '!@#$%&*?:[]^'
     const tamanhoSenha = '-'+this.formSenha.get('tamanhoSenha')?.value
     for (let index = 0; index <this.formSenha.get('tamanhoSenha')?.value; index++) {
       const senha = s[Math.floor(Math.random() * s.length)]
@@ -138,12 +138,12 @@ export class HomeComponent implements OnInit {
     const tamanhoSenha = this.formSenha.get('tamanhoSenha')?.value
     
      if( 
-     this.formSenha.get('enableNumeros')?.value == false &&
-     this.formSenha.get('enableCaracteresEspeciais')?.value == false &&
-     this.formSenha.get('enableLetraMinusculas')?.value == false &&
-     this.formSenha.get('enableLetrasMaiusculas')?.value == false &&
-     this.formSenha.get('enableSomenteLetras')?.value == false &&
-     this.formSenha.get('enableSomenteNumeros')?.value == false
+     !this.formSenha.get('enableNumeros')?.value &&
+     !this.formSenha.get('enableCaracteresEspeciais')?.value  &&
+     !this.formSenha.get('enableLetraMinusculas')?.value  &&
+     !this.formSenha.get('enableLetrasMaiusculas')?.value &&
+     !this.formSenha.get('enableSomenteLetras')?.value  &&
+     !this.formSenha.get('enableSomenteNumeros')?.value
      ){
       this.showMensagem = true 
      }
@@ -153,31 +153,13 @@ export class HomeComponent implements OnInit {
       
       this.senhaGerada.length = 0
       this.showMensagem = false 
-      for (let index = 0; index < senhas.length; index++) {
-        
-        if(senhas[index].label === 'N'){
-          this.senhaGerada.push(this.gerarNumeros())
-        }
-        if(senhas[index].label === 'CE'){
-          this.senhaGerada.push(this.gerarCaracteresEspeciais())
-        }
-
-        if(senhas[index].label === 'LMN'){
-          this.senhaGerada.push(this.gerarLetrasMinusculas())
-        }
-
-        if(senhas[index].label === 'LM'){
-          this.senhaGerada.push(this.gerarLetrasMaiusculas())
-        }
-
-        if(senhas[index].label === 'SL'){
-          this.senhaGerada.push(this.gerarLetrasMinusculas())
-        }
-
-        if(senhas[index].label === 'SN'){
-          this.senhaGerada.push(this.gerarNumeros())
-        }
-
+      for (const element of senhas) {
+        element.label === 'N' ? this.senhaGerada.push(this.gerarNumeros()) : null
+        element.label === 'CE' ? this.senhaGerada.push(this.gerarCaracteresEspeciais()) : null
+        element.label === 'LMN' ? this.senhaGerada.push(this.gerarLetrasMinusculas()) : null
+        element.label === 'LM' ?  this.senhaGerada.push(this.gerarLetrasMaiusculas()) : null
+        element.label === 'SL' ? this.senhaGerada.push(this.gerarLetrasMinusculas()) : null
+        element.label === 'SN' ? this.senhaGerada.push(this.gerarNumeros()) : null
       }
 
       const senhaConcat  = this.senhaGerada.join('')
@@ -185,8 +167,6 @@ export class HomeComponent implements OnInit {
       this.novaSenha = senhaEmbaralhada.substring(0, +tamanhoSenha)
     
     }
-    
-
   }
   copiarSenha(){
     navigator.clipboard.writeText(this.novaSenha).then().catch(e => console.error(e));
