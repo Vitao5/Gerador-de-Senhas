@@ -1,108 +1,119 @@
-<div>
-  <nav class="btn-primary">
+<nav class="btn-primary">
   <h3 class="text-white text-center py-3">DevGenerator</h3>
 </nav>
 <div>
   <p class="text-center mt-4 h2">Ferramenta gratuita de geração de senhas</p>
 </div>
-<div class="col-12 d-flex justify-content-center">
-  <div>
-    <div class="d-flex  card  justify-content-center shadow col-12 col-lg-12 mt-5 mb-3 py-2 ">
-      <div class="d-flex justify-content-between ">
-        <h3 class="ms-5 ps-3">{{novaSenha}}</h3>
-        <button class="btn me-4" (click)="copiarSenha()" id="liveToastBtn" >
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-            class="bi bi-clipboard-check" viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-              d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
-            <path
-              d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-            <path
-              d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-          </svg>
-        </button>
-      </div>
-    </div>
+<div class=" card  shadow col-12 col-lg-7 col-xxl-5 mt-5 mb-3 py-2">
+  <div class="d-flex justify-content-between ">
+    <h3 class="ms-5 ps-3">{{novaSenha}}</h3>
+    <button class="btn me-4" (click)="copiarSenha()" id="liveToastBtn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+        class="bi bi-clipboard-check" viewBox="0 0 16 16">
+        <path fill-rule="evenodd"
+          d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z" />
+        <path
+          d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+        <path
+          d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+      </svg>
+    </button>
+  </div>
+</div>
+<div class="d-flex justify-content-center mb-5">
     <div class="alert alert-danger" role="alert" *ngIf="showMensagem">
       <strong>Atenção - </strong> selecione um padrão de senha
     </div>
-    <div class="card   shadow col-lg-12">
+    <div class="card   shadow col-12 col-lg-7 col-xxl-5 ">
+      <div class="border-bottom text-center pt-3">
+        <h3 class="mb-3">Personalize sua senha</h3>
+      </div>
       <form [formGroup]="formSenha">
         <div class="card-body">
-          <div class="border-bottom text-center">
-            <h3 class="mb-3">Personalize sua senha</h3>
-          </div>
           <label class="form-check-label ms-3 mt-3">Número de caracteres da senha</label>
           <div class="d-flex justify-content-start my-3">
             <div class="ms-4">
               <input type="range" name="vol" value="10" min="10" max="25" class="my-3 input-range"
                 oninput="display.value=value" onchange="display.value=value" formControlName="tamanhoSenha">
             </div>
-            <div class="col-lg-2 ms-5 ps-5">
+            <div class="col-lg-2 ms-5 ps-5 col-2">
               <input type="text" id="display" value="10" readonly class="form-control mb-2">
             </div>
           </div>
 
-          <div class="mt-4 ms-4 d-flex">
+          <div class="mt-4 ms-4 d-flex ">
             <div class="me-5">
               <div class="form-check form-switch mb-2">
-                <input class="form-check-input" type="checkbox" role="switch" id="enableNumeros" [checked]="enableNumeros" 
-                (change)="verificaOpcaoSelecionada('N')" formControlName="enableNumeros" [(ngModel)]="model.enableNumeros">
+                <input class="form-check-input" type="checkbox" role="switch" id="enableNumeros"
+                  [checked]="enableNumeros" (change)="verificaOpcaoSelecionada('N')" formControlName="enableNumeros"
+                  [(ngModel)]="model.enableNumeros">
                 <label class="form-check-label ms-3" for="enableNumeros">Números</label>
               </div>
               <div class="form-check form-switch mb-2">
-                <input class="form-check-input" type="checkbox" role="switch" id="enableCaracteresEspeciais" [checked]="enableCaracteresEspeciais" 
-                (change)="verificaOpcaoSelecionada('CE')" formControlName="enableCaracteresEspeciais" [(ngModel)]="model.enableCaracteresEspeciais">
+                <input class="form-check-input" type="checkbox" role="switch" id="enableCaracteresEspeciais"
+                  [checked]="enableCaracteresEspeciais" (change)="verificaOpcaoSelecionada('CE')"
+                  formControlName="enableCaracteresEspeciais" [(ngModel)]="model.enableCaracteresEspeciais">
                 <label class="form-check-label ms-3" for="enableCaracteresEspeciais">Caracteres especiais</label>
               </div>
               <div class="form-check form-switch mb-2">
-                <input class="form-check-input" type="checkbox" role="switch" id="enableLetrasMaiusculas" [checked]="enableLetrasMaiusculas" 
-                (change)="verificaOpcaoSelecionada('LM')" formControlName="enableLetrasMaiusculas" [(ngModel)]="model.enableLetrasMaiusculas">
+                <input class="form-check-input" type="checkbox" role="switch" id="enableLetrasMaiusculas"
+                  [checked]="enableLetrasMaiusculas" (change)="verificaOpcaoSelecionada('LM')"
+                  formControlName="enableLetrasMaiusculas" [(ngModel)]="model.enableLetrasMaiusculas">
                 <label class="form-check-label ms-3" for="enableLetrasMaiusculas">Letras maiúsculas</label>
               </div>
             </div>
-            <div class="ms-5">
+            <div class=" d-flex d-none d-sm-block">
+              <div class="ms-5 ps-4">
+                <div class="form-check form-switch mb-2">
+                  <input class="form-check-input" type="checkbox" role="switch" id="enableLetraMinusculas"
+                    [checked]="enableLetraMinusculas" (change)="verificaOpcaoSelecionada('LMN')"
+                    formControlName="enableLetraMinusculas" [(ngModel)]="model.enableLetraMinusculas">
+                  <label class="form-check-label ms-3" for="enableLetraMinusculas">Letras minúsculas</label>
+                </div>
+                <div class="form-check form-switch mb-2">
+                  <input class="form-check-input" type="checkbox" role="switch" id="enableSomenteLetras"
+                    (change)="verificaOpcaoSelecionada('SL')" [checked]="enableSomenteLetras"
+                    formControlName="enableSomenteLetras" [(ngModel)]="model.enableSomenteLetras">
+                  <label class="form-check-label ms-3" for="enableSomenteLetras">Somente letras</label>
+                </div>
+                <div class="form-check form-switch mb-2">
+                  <input class="form-check-input" type="checkbox" role="switch" id="enableSomenteNumeros"
+                    (change)="verificaOpcaoSelecionada('SN')" [checked]="enableSomenteNumeros"
+                    formControlName="enableSomenteNumeros" [(ngModel)]="model.enableSomenteNumeros">
+                  <label class="form-check-label ms-3" for="enableSomenteNumeros">Somente números</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 d-flex d-xxl-none d-lg-none">
+            <div class="ms-4">
               <div class="form-check form-switch mb-2">
-                <input class="form-check-input" type="checkbox" role="switch" id="enableLetraMinusculas" [checked]="enableLetraMinusculas" 
-                (change)="verificaOpcaoSelecionada('LMN')"formControlName="enableLetraMinusculas" [(ngModel)]="model.enableLetraMinusculas" >
+                <input class="form-check-input" type="checkbox" role="switch" id="enableLetraMinusculas"
+                  [checked]="enableLetraMinusculas" (change)="verificaOpcaoSelecionada('LMN')"
+                  formControlName="enableLetraMinusculas" [(ngModel)]="model.enableLetraMinusculas">
                 <label class="form-check-label ms-3" for="enableLetraMinusculas">Letras minúsculas</label>
               </div>
               <div class="form-check form-switch mb-2">
-                <input class="form-check-input" type="checkbox" role="switch" id="enableSomenteLetras"  
-                (change)="verificaOpcaoSelecionada('SL')"  [checked]="enableSomenteLetras" formControlName="enableSomenteLetras" [(ngModel)]="model.enableSomenteLetras">
+                <input class="form-check-input" type="checkbox" role="switch" id="enableSomenteLetras"
+                  (change)="verificaOpcaoSelecionada('SL')" [checked]="enableSomenteLetras"
+                  formControlName="enableSomenteLetras" [(ngModel)]="model.enableSomenteLetras">
                 <label class="form-check-label ms-3" for="enableSomenteLetras">Somente letras</label>
               </div>
               <div class="form-check form-switch mb-2">
-                <input class="form-check-input" type="checkbox" role="switch" id="enableSomenteNumeros"  
-                (change)="verificaOpcaoSelecionada('SN')" [checked]="enableSomenteNumeros"formControlName="enableSomenteNumeros"
-                 [(ngModel)]="model.enableSomenteNumeros" >
+                <input class="form-check-input" type="checkbox" role="switch" id="enableSomenteNumeros"
+                  (change)="verificaOpcaoSelecionada('SN')" [checked]="enableSomenteNumeros"
+                  formControlName="enableSomenteNumeros" [(ngModel)]="model.enableSomenteNumeros">
                 <label class="form-check-label ms-3" for="enableSomenteNumeros">Somente números</label>
               </div>
             </div>
           </div>
+       
 
-
-
-          <div class="d-flex justify-content-center mb-3 mt-3">
-            <button class="btn btn-primary col-lg-3 mt-4 pt-2 " (click)="gerarSenha()">Gerar Senha</button>
-          </div>
+        </div>
+        <div class="d-flex justify-content-center mb-3 mt-3">
+          <button class="btn btn-primary col-lg-3 mt-4 pt-2 " (click)="gerarSenha()">Gerar Senha</button>
         </div>
       </form>
     </div>
-  </div>
-</div>
-
-<div class="toast-container position-fixed bottom-0 end-0 p-3">
-  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-      <img src="..." class="rounded me-2" alt="...">
-      <strong class="me-auto">Bootstrap</strong>
-      <small>11 mins ago</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Hello, world! This is a toast message.
-    </div>
-  </div>
-</div>
 </div>
