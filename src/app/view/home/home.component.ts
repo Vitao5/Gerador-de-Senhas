@@ -145,13 +145,14 @@ export class HomeComponent implements OnInit {
      this.formSenha.get('enableSomenteLetras')?.value == false &&
      this.formSenha.get('enableSomenteNumeros')?.value == false
      ){
-      // this.showMensagem = true 
+      this.showMensagem = true 
      }
     
     else{
       const senhas = this.opcoesSelecionadas()
       
       this.senhaGerada.length = 0
+      this.showMensagem = false 
       for (let index = 0; index < senhas.length; index++) {
         
         if(senhas[index].label === 'N'){

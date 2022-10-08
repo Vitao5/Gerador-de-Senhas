@@ -1,4 +1,5 @@
-<nav class="btn-primary">
+<div>
+  <nav class="btn-primary">
   <h3 class="text-white text-center py-3">DevGenerator</h3>
 </nav>
 <div>
@@ -6,10 +7,10 @@
 </div>
 <div class="col-12 d-flex justify-content-center">
   <div>
-    <div class="d-flex  card   shadow col-12 mt-5 mb-3 py-2 ">
-      <div class="d-flex justify-content-between">
+    <div class="d-flex  card  justify-content-center shadow col-12 col-lg-12 mt-5 mb-3 py-2 ">
+      <div class="d-flex justify-content-between ">
         <h3 class="ms-5 ps-3">{{novaSenha}}</h3>
-        <button class="btn me-4" (click)="copiarSenha()" id="liveToastBtn">
+        <button class="btn me-4" (click)="copiarSenha()" id="liveToastBtn" >
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
             class="bi bi-clipboard-check" viewBox="0 0 16 16">
             <path fill-rule="evenodd"
@@ -25,7 +26,7 @@
     <div class="alert alert-danger" role="alert" *ngIf="showMensagem">
       <strong>Atenção - </strong> selecione um padrão de senha
     </div>
-    <div class="card   shadow col-12">
+    <div class="card   shadow col-lg-12">
       <form [formGroup]="formSenha">
         <div class="card-body">
           <div class="border-bottom text-center">
@@ -103,4 +104,5 @@
       Hello, world! This is a toast message.
     </div>
   </div>
+</div>
 </div>
